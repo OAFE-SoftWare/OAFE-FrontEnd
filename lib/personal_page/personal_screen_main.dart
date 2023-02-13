@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:oafe/personal_page/recent_visit_card.dart';
 import 'package:oafe/sidemenu.dart';
 
 import '../setting/oafe_preset.dart';
 
 class PersonalPage extends StatelessWidget {
-  const PersonalPage({Key? key}) : super(key: key);
+  String userSettingName = "OAFE";
+
+  //String userSettingImage = "";
+
+  PersonalPage({
+    Key? key,
+    required this.userSettingName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,48 +24,75 @@ class PersonalPage extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const SideMenu(),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: OafePreset.MainColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                child: const Text(
-                  "OAFE",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 30),
+                height: 390,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 4,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                            color: OafePreset.MainColor,
+                            border: Border.all(color: OafePreset.MainColor),
+                            shape: BoxShape.circle),
+                        child: const Icon(
+                          Icons.person,
+                          size: 50,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Text(
+                              "$userSettingName",
+                              style: TextStyle(
+                                  fontSize: OafePreset.LargeTitleSize),
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.mode_edit_outline_outlined,
+                              size: 30,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: OafePreset.MainColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                child: const Text(
-                  "최근방문",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 30),
-                ),
+              const SizedBox(
+                height: 15,
               ),
-            ),
-          ],
+              UserRecentVisitCard(
+                  cafeName: "Haunt",
+                  cafeLocation: "덕양구 화정동",
+                  cafeReviewRating: 4.9,
+                  numberOfUserCafeVisits: 21517,
+                  numberOfUserWriteCafeReview: 21),
+            ],
+          ),
         ),
       ),
     );

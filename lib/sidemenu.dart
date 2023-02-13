@@ -21,12 +21,13 @@ class SideMenu extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.to(const PersonalPage());
+                    Get.to(PersonalPage(userSettingName: "OAFE",));
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,26 +38,27 @@ class SideMenu extends StatelessWidget {
                                   color: OafePreset.TextBrightColor,
                                   fontSize: 36),
                             ),
+                            SizedBox(height: 10,),
                             Text(
-                              'Membership',
+                              'OAFE Member',
                               style: TextStyle(
                                   color: OafePreset.TextUnemphasizeColor,
-                                  fontSize: 24),
+                                  fontSize: 20),
                             ),
                           ],
                         ),
                         const Icon(
                           Icons.keyboard_arrow_right,
                           color: OafePreset.TextBrightColor,
-                          size: 50,
+                          size: 55,
                         )
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 5,
-                  width: 150,
+                  height: 4,
+                  width: 180,
                   child: ColoredBox(
                     color: Colors.white,
                   ),
@@ -72,7 +74,7 @@ class SideMenu extends StatelessWidget {
               },
               child: const ListTile(
                 leading: Icon(
-                  Icons.coffee_outlined,
+                  Icons.map_outlined,
                   color: OafePreset.TextBrightColor,
                   size: 40,
                 ),
@@ -94,7 +96,7 @@ class SideMenu extends StatelessWidget {
               },
               child: const ListTile(
                 leading: Icon(
-                  Icons.thumb_up_alt_outlined,
+                  Icons.coffee_outlined,
                   color: OafePreset.TextBrightColor,
                   size: 40,
                 ),
