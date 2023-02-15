@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:oafe/personal_page/recent_visit_card.dart';
 import 'package:oafe/sidemenu.dart';
 
 import '../setting/oafe_preset.dart';
+import '../setting_page/setting_main_screen.dart';
 
 class PersonalPage extends StatelessWidget {
   String userSettingName = "OAFE";
@@ -19,9 +21,19 @@ class PersonalPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: OafePreset.SubColor,
+        backgroundColor: Colors.white24,
         iconTheme: const IconThemeData(color: OafePreset.MainColor),
         elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.to(SettingMainPage());
+            },
+            icon: Icon(
+              Icons.settings,
+            ),
+          )
+        ],
       ),
       drawer: const SideMenu(),
       body: SingleChildScrollView(
@@ -86,11 +98,12 @@ class PersonalPage extends StatelessWidget {
                 height: 15,
               ),
               UserRecentVisitCard(
-                  cafeName: "Haunt",
-                  cafeLocation: "덕양구 화정동",
-                  cafeReviewRating: 4.9,
-                  numberOfUserCafeVisits: 21517,
-                  numberOfUserWriteCafeReview: 21),
+                cafeName: 'hanunt',
+                cafeLocation: '덕양구 화정동',
+                cafeReviewRating: 4.8,
+                numberOfUserCafeVisits: 2102,
+                numberOfUserWriteCafeReview: 21,
+              ),
             ],
           ),
         ),

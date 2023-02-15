@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:oafe/main.dart';
 import 'package:oafe/personal_page/personal_screen_main.dart';
 import 'package:oafe/setting/oafe_preset.dart';
+import 'package:oafe/setting_page/setting_main_screen.dart';
 import 'package:oafe/tumbler_page/tumbler_upload_screen.dart';
 
 class SideMenu extends StatelessWidget {
@@ -126,7 +127,7 @@ class SideMenu extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.pop(context);
+                Get.to(const SettingMainPage());
               },
             ),
           ),

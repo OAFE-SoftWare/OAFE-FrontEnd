@@ -3,9 +3,8 @@ import 'package:oafe/setting/oafe_preset.dart';
 
 class UserRecentVisitCard extends StatefulWidget {
   String cafeName, cafeLocation;
-  double cafeReviewRating;
-
   int numberOfUserWriteCafeReview, numberOfUserCafeVisits;
+  double cafeReviewRating;
 
   UserRecentVisitCard({
     Key? key,
@@ -18,6 +17,18 @@ class UserRecentVisitCard extends StatefulWidget {
 
   @override
   State<UserRecentVisitCard> createState() => _UserRecentVisitCardState();
+
+  factory UserRecentVisitCard.fromJson(Map<String, dynamic> json){
+    var userRecentVisitCardCardinformation = UserRecentVisitCard(
+        cafeName: json['cafeName'] as String,
+        cafeLocation: json['cafeLocation'] as String,
+        cafeReviewRating: json['cafeReviewRating'] as double,
+        numberOfUserCafeVisits: json['numberOfUserCafeVisits'] as int,
+        numberOfUserWriteCafeReview: json['numberOfUserWriteCafeReview'] as int
+    );
+
+        return userRecentVisitCardCardinformation;
+  }
 }
 
 class _UserRecentVisitCardState extends State<UserRecentVisitCard> {
@@ -72,6 +83,144 @@ class _UserRecentVisitCardState extends State<UserRecentVisitCard> {
                     spacing: 20,
                     runSpacing: 10,
                     children: [
+                      //cafecard
+                      // ListView.builder(
+                      //     itemCount: cafeName.length,
+                      //     itemBuilder: (BuildContext context, int index) {
+                      //       return Container(
+                      //         width: 170,
+                      //         height: 260,
+                      //         child: Card(
+                      //           shape: RoundedRectangleBorder(
+                      //             side:
+                      //             const BorderSide(color: OafePreset.MainColor),
+                      //             borderRadius: userInterfaceBorderRadius,
+                      //           ),
+                      //           elevation: 4,
+                      //           child: Column(
+                      //             mainAxisAlignment: MainAxisAlignment.start,
+                      //             children: [
+                      //               ClipRRect(
+                      //                 borderRadius: userInterfaceBorderRadius,
+                      //                 child: Container(
+                      //                   padding: const EdgeInsets.all(1),
+                      //                   decoration: BoxDecoration(
+                      //                       color: OafePreset
+                      //                           .TextUnemphasizeColor,
+                      //                       borderRadius:
+                      //                       userInterfaceBorderRadius),
+                      //                   child: Stack(
+                      //                     children: [
+                      //                       Image.network(
+                      //                           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAxMDdfMTgx%2FMDAxNjQxNTM5NzgzNDQ3.IqtCd_3_V90ypPiBFbc0VMDSMzWtwxZq-c2_86mNTw8g.mv4GsdePCVs4pH_C-icJJhJZJVw3JNrjAlTN2YfJepQg.JPEG.ksl8905%2FIMG_3022.jpg&type=sc960_832',
+                      //                           width: 170,
+                      //                           height: 200,
+                      //                           fit: BoxFit.fill,
+                      //                           colorBlendMode: BlendMode
+                      //                               .modulate,
+                      //                           color:
+                      //                           OafePreset.TextUnemphasizeColor
+                      //                               .withOpacity(0.9)),
+                      //                       Positioned(
+                      //                         top: 6,
+                      //                         left: 6,
+                      //                         child: Row(
+                      //                           children: [
+                      //                             Icon(
+                      //                               Icons.people_alt_outlined,
+                      //                               size: 12,
+                      //                               color:
+                      //                               OafePreset.TextBrightColor,
+                      //                             ),
+                      //                             Text(
+                      //                               "$numberOfUserCafeVisits",
+                      //                               style: TextStyle(
+                      //                                   fontSize: 12,
+                      //                                   color: OafePreset
+                      //                                       .TextBrightColor),
+                      //                             ),
+                      //                             Icon(
+                      //                                 Icons
+                      //                                     .mode_edit_outline_outlined,
+                      //                                 size: 12,
+                      //                                 color: OafePreset
+                      //                                     .TextBrightColor),
+                      //                             Text(
+                      //                               "$numberOfUserWriteCafeReview",
+                      //                               style: TextStyle(
+                      //                                   fontSize: 12,
+                      //                                   color: OafePreset
+                      //                                       .TextBrightColor),
+                      //                             ),
+                      //                           ],
+                      //                         ),
+                      //                       ),
+                      //                       Positioned(
+                      //                         bottom: -5.0,
+                      //                         right: -5.0,
+                      //                         child: IconButton(
+                      //                           icon: Icon(
+                      //                             _icon,
+                      //                             color: OafePreset.PointColor,
+                      //                             size: 30,
+                      //                           ),
+                      //                           onPressed: _changeIcon,
+                      //                         ),
+                      //                       ),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //               Container(
+                      //                 padding: EdgeInsets.symmetric(
+                      //                     horizontal: 10),
+                      //                 width: double.infinity,
+                      //                 child: Column(
+                      //                   crossAxisAlignment:
+                      //                   CrossAxisAlignment.start,
+                      //                   children: [
+                      //                     Text(
+                      //                       '$cafeName',
+                      //                       style: TextStyle(fontSize: 15),
+                      //                     ),
+                      //                     Row(
+                      //                       children: [
+                      //                         Icon(
+                      //                           Icons.star_border_outlined,
+                      //                           size: 12,
+                      //                         ),
+                      //                         Text(
+                      //                           '$cafeReviewRating',
+                      //                           style: TextStyle(fontSize: 12),
+                      //                         ),
+                      //                         Text(
+                      //                           '/5.0',
+                      //                           style: TextStyle(
+                      //                               fontSize: 10,
+                      //                               color: OafePreset
+                      //                                   .TextUnemphasizeColor),
+                      //                         ),
+                      //                       ],
+                      //                     ),
+                      //                     Row(
+                      //                       children: [
+                      //                         Icon(Icons.location_on_outlined,
+                      //                             size: 13),
+                      //                         Text(
+                      //                           "$cafeLocation",
+                      //                           style: TextStyle(fontSize: 12),
+                      //                         ),
+                      //                       ],
+                      //                     ),
+                      //                   ],
+                      //                 ),
+                      //               ),
+                      //             ],
+                      //           ),
+                      //         ),
+                      //       );
+                      //     }),
+                      //임시 보이기
                       Container(
                         width: 170,
                         height: 260,
@@ -94,22 +243,43 @@ class _UserRecentVisitCardState extends State<UserRecentVisitCard> {
                                   child: Stack(
                                     children: [
                                       Image.network(
-                                        'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAxMDdfMTgx%2FMDAxNjQxNTM5NzgzNDQ3.IqtCd_3_V90ypPiBFbc0VMDSMzWtwxZq-c2_86mNTw8g.mv4GsdePCVs4pH_C-icJJhJZJVw3JNrjAlTN2YfJepQg.JPEG.ksl8905%2FIMG_3022.jpg&type=sc960_832',
-                                        width: 170,
-                                        height: 200,
-                                        fit: BoxFit.fill,
-                                        colorBlendMode: BlendMode.modulate,
-                                        color: OafePreset.TextUnemphasizeColor.withOpacity(0.9)
-                                      ),
+                                          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAxMDdfMTgx%2FMDAxNjQxNTM5NzgzNDQ3.IqtCd_3_V90ypPiBFbc0VMDSMzWtwxZq-c2_86mNTw8g.mv4GsdePCVs4pH_C-icJJhJZJVw3JNrjAlTN2YfJepQg.JPEG.ksl8905%2FIMG_3022.jpg&type=sc960_832',
+                                          width: 170,
+                                          height: 200,
+                                          fit: BoxFit.fill,
+                                          colorBlendMode: BlendMode.modulate,
+                                          color: OafePreset.TextUnemphasizeColor
+                                              .withOpacity(0.9)),
                                       Positioned(
                                         top: 6,
                                         left: 6,
                                         child: Row(
                                           children: [
-                                            Icon(Icons.people_alt_outlined,size:12,color: OafePreset.TextBrightColor,),
-                                            Text("$numberOfUserCafeVisits",style: TextStyle(fontSize: 12,color: OafePreset.TextBrightColor),),
-                                            Icon(Icons.mode_edit_outline_outlined,size:12,color: OafePreset.TextBrightColor),
-                                            Text("$numberOfUserWriteCafeReview",style: TextStyle(fontSize: 12,color: OafePreset.TextBrightColor),),
+                                            Icon(
+                                              Icons.people_alt_outlined,
+                                              size: 12,
+                                              color: OafePreset.TextBrightColor,
+                                            ),
+                                            Text(
+                                              "$numberOfUserCafeVisits",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: OafePreset
+                                                      .TextBrightColor),
+                                            ),
+                                            Icon(
+                                                Icons
+                                                    .mode_edit_outline_outlined,
+                                                size: 12,
+                                                color:
+                                                OafePreset.TextBrightColor),
+                                            Text(
+                                              "$numberOfUserWriteCafeReview",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: OafePreset
+                                                      .TextBrightColor),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -117,7 +287,11 @@ class _UserRecentVisitCardState extends State<UserRecentVisitCard> {
                                         bottom: -5.0,
                                         right: -5.0,
                                         child: IconButton(
-                                          icon: Icon(_icon, color: OafePreset.PointColor,size: 30,),
+                                          icon: Icon(
+                                            _icon,
+                                            color: OafePreset.PointColor,
+                                            size: 30,
+                                          ),
                                           onPressed: _changeIcon,
                                         ),
                                       ),
@@ -198,17 +372,38 @@ class _UserRecentVisitCardState extends State<UserRecentVisitCard> {
                                           height: 200,
                                           fit: BoxFit.fill,
                                           colorBlendMode: BlendMode.modulate,
-                                          color: OafePreset.TextUnemphasizeColor.withOpacity(0.9)
-                                      ),
+                                          color: OafePreset.TextUnemphasizeColor
+                                              .withOpacity(0.9)),
                                       Positioned(
                                         top: 6,
                                         left: 6,
                                         child: Row(
                                           children: [
-                                            Icon(Icons.people_alt_outlined,size:12,color: OafePreset.TextBrightColor,),
-                                            Text("$numberOfUserCafeVisits",style: TextStyle(fontSize: 12,color: OafePreset.TextBrightColor),),
-                                            Icon(Icons.mode_edit_outline_outlined,size:12,color: OafePreset.TextBrightColor),
-                                            Text("$numberOfUserWriteCafeReview",style: TextStyle(fontSize: 12,color: OafePreset.TextBrightColor),),
+                                            Icon(
+                                              Icons.people_alt_outlined,
+                                              size: 12,
+                                              color: OafePreset.TextBrightColor,
+                                            ),
+                                            Text(
+                                              "$numberOfUserCafeVisits",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: OafePreset
+                                                      .TextBrightColor),
+                                            ),
+                                            Icon(
+                                                Icons
+                                                    .mode_edit_outline_outlined,
+                                                size: 12,
+                                                color:
+                                                OafePreset.TextBrightColor),
+                                            Text(
+                                              "$numberOfUserWriteCafeReview",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: OafePreset
+                                                      .TextBrightColor),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -216,7 +411,11 @@ class _UserRecentVisitCardState extends State<UserRecentVisitCard> {
                                         bottom: -5.0,
                                         right: -5.0,
                                         child: IconButton(
-                                          icon: Icon(_icon, color: OafePreset.PointColor,size: 30,),
+                                          icon: Icon(
+                                            _icon,
+                                            color: OafePreset.PointColor,
+                                            size: 30,
+                                          ),
                                           onPressed: _changeIcon,
                                         ),
                                       ),

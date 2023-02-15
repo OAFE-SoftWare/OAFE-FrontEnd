@@ -49,7 +49,7 @@ class TumblerMainPage extends StatelessWidget {
                             vertical: 5, horizontal: 25),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(const QRCodeReader());
+                            Get.to(QRCodeReaderPage());
                           },
                           child: Container(
                             width: double.infinity,

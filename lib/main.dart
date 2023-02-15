@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oafe/search.dart';
 import 'package:oafe/setting/color_repository.dart';
 import 'package:oafe/setting/oafe_preset.dart';
 import 'package:oafe/sidemenu.dart';
@@ -38,6 +39,11 @@ class _OafeState extends State<Oafe> {
         backgroundColor: OafePreset.SubColor,
         iconTheme: IconThemeData(color: OafePreset.MainColor),
         elevation: 0,
+        actions: [
+          IconButton(onPressed: () {
+            Get.to(SearchPage());},
+              icon: Icon(Icons.search_outlined),)
+        ],
       ),
       drawer: const SideMenu(),
       body: Padding(
