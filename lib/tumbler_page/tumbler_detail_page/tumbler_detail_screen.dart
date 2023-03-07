@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../setting/oafe_preset.dart';
-import 'QR_code_read/qr_code_reader_main.dart';
+import 'package:oafe/setting/oafe_preset.dart';
+import 'package:oafe/tumbler_page/QR_code_read/qr_code_reader_main.dart';
+import 'package:oafe/tumbler_page/tumbler_detail_page/tumbler_detail_delete_screen.dart';
 
 class TumblerCardDetail extends StatelessWidget {
-  const TumblerCardDetail({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 3,
+    return SizedBox(
+      height: 600,
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -18,15 +16,15 @@ class TumblerCardDetail extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.symmetric(vertical: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 flex: 3,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 5, horizontal: 25),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                   child: GestureDetector(
                     onTap: () {
                       Get.to(QRCodeReaderPage());
@@ -40,27 +38,18 @@ class TumblerCardDetail extends StatelessWidget {
                             color: OafePreset.MainColor,
                             style: BorderStyle.solid,
                             width: 1.3,
-
                           )),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: const [
                           Icon(
-                            Icons.camera_alt_outlined,
+                            Icons.coffee_rounded,
                             size: 150,
                             color: OafePreset.MainColor,
                           ),
                           SizedBox(
                             height: 20,
-                          ),
-                          Text(
-                            "Click! 텀블러를 보여주세요!",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontStyle: FontStyle.italic,
-                              color: OafePreset.MainColor,
-                            ),
                           ),
                         ],
                       ),
@@ -93,38 +82,90 @@ class TumblerCardDetail extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(
+                      height: 20,
+                    ),
                     const Text(
                       "오아페와 함께 지구를 사랑해주셔서 감사합니다.",
                       style: TextStyle(
                         color: OafePreset.EcoColor,
-                        fontSize: 18,
+                        fontSize: 20,
                       ),
                     ),
-                    SizedBox(height: 50,),
+                    SizedBox(height: 10,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "현재 이용 횟수 : ",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: OafePreset.TextUnemphasizeColor),
+                        ),
+                        Text(
+                          "34회",
+                          style: TextStyle(fontSize: 16),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 5,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Text(
-                          "권장 이용 횟수: ",
+                          "권장 이용: ",
                           style: TextStyle(
                             color: OafePreset.TextUnemphasizeColor,
-                            fontSize: 18,
+                            fontSize: 12,
                           ),
                         ),
                         Text(
-                          "50 ~ 100",
+                          "50회 ~ 100회",
                           style: TextStyle(
                             color: OafePreset.TextDarkColor,
-                            fontSize: 18,
+                            fontSize: 12,
                           ),
                         ),
                       ],
                     ),
                   ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: OafePreset.MainColor,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                          color: OafePreset.PointColor, width: 1)),
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.bottomSheet(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(14),
+                            ),
+                          ),
+                          backgroundColor: OafePreset.MainColor,
+                          isScrollControlled: true,
+                          ignoreSafeArea: false ,
+                          SafeArea(child: TumblerCardDeleteScreen()));
+                    },
+                    child: const Center(
+                        child: Text(
+                          '삭제하기',
+                          style: TextStyle(
+                              fontSize: 24, color: OafePreset.TextBrightColor),
+                        ),
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oafe/setting/oafe_preset.dart';
-import 'package:oafe/tumbler_page/tumbler_detail_screen.dart';
+import 'package:oafe/tumbler_page/tumbler_detail_page/tumbler_detail_screen.dart';
 
 class TumblerCard extends StatefulWidget {
   String name;
@@ -26,67 +26,78 @@ class _TumblerCardState extends State<TumblerCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        //등록 카드
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 13),
-              child: Column(
-                children: [
-                  Container(
-                    width: 120,
-                    height: 130,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: OafePreset.MainColor,
-                      borderRadius: BorderRadius.circular(14),
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(50, 0, 0, 0),
-                            blurRadius: 3.0,
-                            spreadRadius: 1.0,
-                            offset: Offset(0, 3)),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          //child: Text(name ?? '등록하기'),
-                          height: 112,
-                          width: 120,
-                          decoration: BoxDecoration(
-                            color: OafePreset.TextBrightColor,
-                            borderRadius: BorderRadius.circular(14),
+    return Container(
+      child: ListView(scrollDirection: Axis.horizontal, children: <Widget>[
+        Container(
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 13),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 120,
+                      height: 130,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: OafePreset.MainColor,
+                        borderRadius: BorderRadius.circular(14),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color.fromARGB(50, 0, 0, 0),
+                              blurRadius: 3.0,
+                              spreadRadius: 1.0,
+                              offset: Offset(0, 3)),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            //child: Text(name ?? '등록하기'),
+                            height: 112,
+                            width: 120,
+                            decoration: BoxDecoration(
+                              color: OafePreset.TextBrightColor,
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: const Icon(
+                              Icons.photo_camera_outlined,
+                              size: 50,
+                            ),
                           ),
-                          child: const Icon(
-                            Icons.photo_camera_outlined,
-                            size: 50,
-                          ),
-                        ),
-                        const Text(
-                          "등록하기",
-                          style: TextStyle(color:OafePreset.TextBrightColor),
-                        )
-                      ],
+                          const Text(
+                            "등록하기",
+                            style: TextStyle(color: OafePreset.TextBrightColor),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         //텀블러 카드
         GestureDetector(
-          onTap: (){
-            Get.to(const TumblerCardDetail());
+          onTap: () {
+            Get.bottomSheet(
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(14),
+                  ),
+                ),
+                backgroundColor: OafePreset.TextBrightColor,
+                isScrollControlled: true,
+                SafeArea(child: TumblerCardDetail()));
           },
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 13),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 13),
                 child: Column(
                   children: [
                     Container(
@@ -118,7 +129,7 @@ class _TumblerCardState extends State<TumblerCard> {
                             child: const Icon(
                               Icons.coffee_outlined,
                               size: 50,
-                            ),// 이미지로 변경
+                            ), // 이미지로 변경
                           ),
                           const Text(
                             "Tumbler",
@@ -132,8 +143,8 @@ class _TumblerCardState extends State<TumblerCard> {
               ),
             ],
           ),
-        )
-      ],
+        ),
+      ]),
     );
   }
 }

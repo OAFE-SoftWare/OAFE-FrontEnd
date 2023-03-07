@@ -51,5 +51,14 @@
     <true/>
     <key>NSCameraUsageDescription</key>
     <string>This app needs camera access to scan QR codes</string>
+    <key>CFBundleURLTypes</key>
+        <array>
+          <dict>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>6134b0eeec95701b53f402c2ac490c97</string>
+          </array>
+          </dict>
+        </array>
 </dict>
 </plist>

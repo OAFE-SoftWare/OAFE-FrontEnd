@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:oafe/search.dart';
 import 'package:oafe/setting/color_repository.dart';
+import 'package:oafe/setting/login/kakao_login_screen.dart';
 import 'package:oafe/setting/oafe_preset.dart';
 import 'package:oafe/sidemenu.dart';
 
 void main() {
+  KakaoSdk.init(nativeAppKey: '6134b0eeec95701b53f402c2ac490c97');
   runApp(const MyApp());
 }
 
@@ -40,33 +43,16 @@ class _OafeState extends State<Oafe> {
         iconTheme: IconThemeData(color: OafePreset.MainColor),
         elevation: 0,
         actions: [
-          IconButton(onPressed: () {
-            Get.to(SearchPage());},
-              icon: Icon(Icons.search_outlined),)
+          IconButton(
+            onPressed: () {
+              Get.to(SearchPage());
+            },
+            icon: Icon(Icons.search_outlined),
+          )
         ],
       ),
       drawer: const SideMenu(),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                child: const Text(
-                  "OAFE",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: SampleScreen()
     );
   }
 }

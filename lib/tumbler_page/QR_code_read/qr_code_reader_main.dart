@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oafe/tumbler_page/tumbler_detail_screen.dart';
+import 'package:oafe/tumbler_page/tumbler_detail_page/tumbler_detail_screen.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:oafe/setting/oafe_preset.dart';
 
@@ -120,8 +120,9 @@ class _QRCodeReaderPageState extends State<QRCodeReaderPage> {
                         width: double.infinity,
                         margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: OafePreset.PointColor,
+                          color: OafePreset.PointColor.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(40),
+                          border: Border.all(color: OafePreset.PointColor,width: 1)
                         ),
                         child: const Center(
                             child: Text(
