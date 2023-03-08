@@ -10,7 +10,7 @@ class TumblerCardDeleteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: MediaQuery.of(context).size.height * 0.3,
       child: Container(
         color: OafePreset.MainColor,
         child: Column(
@@ -37,7 +37,7 @@ class TumblerCardDeleteScreen extends StatelessWidget {
                       Get.offAll(() => TumblerMainPage());
                     },
                     child: Container(
-                      width: 130,
+                      width: MediaQuery.of(context).size.width * 0.4,
                       child: const Center(
                         child: Text(
                           '네 삭제할께요',
@@ -57,7 +57,7 @@ class TumblerCardDeleteScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
                       ),
-                      width: 130,
+                      width: MediaQuery.of(context).size.width * 0.4,
                       child: const Center(
                         child: Text(
                           '고민해볼께요',

@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:oafe/setting/oafe_preset.dart';
 import 'package:oafe/tumbler_page/QR_code_read/qr_code_reader_main.dart';
 import 'package:oafe/tumbler_page/tumbler_detail_page/tumbler_detail_delete_screen.dart';
+import 'package:oafe/tumbler_page/tumbler_detail_page/tumbler_qrcode_detail_screen.dart';
 
 class TumblerCardDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 600,
+      height: MediaQuery.of(context).size.height * 0.65,
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -24,7 +25,7 @@ class TumblerCardDetail extends StatelessWidget {
                 flex: 3,
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                  const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                   child: GestureDetector(
                     onTap: () {
                       Get.to(QRCodeReaderPage());
@@ -77,7 +78,25 @@ class TumblerCardDetail extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Icon(Icons.qr_code_2, size: 100),
+                    GestureDetector(
+                        onTap: () {
+                          Get.bottomSheet(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(14),
+                                ),
+                              ),
+                              backgroundColor: OafePreset.MainColor,
+                              isScrollControlled: true,
+                              ignoreSafeArea: false,
+                              SafeArea(child: TumblerQRcodeDetail())
+                          );
+                        },
+                        child: Image.asset(
+                          'images/oafeBlogQrcode.png',
+                          fit: BoxFit.fill,
+                        ),
+                    ),
                   ],
                 ),
               ),
@@ -86,7 +105,7 @@ class TumblerCardDetail extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     const Text(
@@ -96,23 +115,24 @@ class TumblerCardDetail extends StatelessWidget {
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           "현재 이용 횟수 : ",
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 12,
                               color: OafePreset.TextUnemphasizeColor),
                         ),
                         Text(
                           "34회",
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: 12),
                         )
                       ],
                     ),
-                    SizedBox(height: 5,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -143,10 +163,10 @@ class TumblerCardDetail extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: OafePreset.MainColor,
                       borderRadius: BorderRadius.circular(14),
-                      border: Border.all(
-                          color: OafePreset.PointColor, width: 1)),
+                      border:
+                      Border.all(color: OafePreset.PointColor, width: 1)),
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.bottomSheet(
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
@@ -155,15 +175,15 @@ class TumblerCardDetail extends StatelessWidget {
                           ),
                           backgroundColor: OafePreset.MainColor,
                           isScrollControlled: true,
-                          ignoreSafeArea: false ,
+                          ignoreSafeArea: false,
                           SafeArea(child: TumblerCardDeleteScreen()));
                     },
                     child: const Center(
-                        child: Text(
-                          '삭제하기',
-                          style: TextStyle(
-                              fontSize: 24, color: OafePreset.TextBrightColor),
-                        ),
+                      child: Text(
+                        '삭제하기',
+                        style: TextStyle(
+                            fontSize: 24, color: OafePreset.TextBrightColor),
+                      ),
                     ),
                   ),
                 ),

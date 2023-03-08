@@ -108,7 +108,7 @@ class TumblerMainPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const Icon(Icons.qr_code_2, size: 100),
+                          const Icon(Icons.qr_code_2_rounded, size: 100),
                         ],
                       ),
                     ),
